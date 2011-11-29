@@ -54,7 +54,7 @@ from django.utils.encoding import iri_to_uri
 from django.conf import settings
 from django.core.cache import get_cache, DEFAULT_CACHE_ALIAS
 from django.utils.cache import patch_response_headers, get_max_age, cc_delim_re
-from django.utils.timezone import get_current_timezone_name
+#from django.utils.timezone import get_current_timezone_name
 from django.utils.translation import get_language
 
 class TwoPartCacheMiddlewareBase(object):
@@ -88,8 +88,8 @@ class TwoPartCacheMiddlewareBase(object):
             # LANGUAGE_CODE to request, then fall back to the active language
             # which in turn can also fall back to settings.LANGUAGE_CODE
             cache_key += '.%s' % getattr(request, 'LANGUAGE_CODE', get_language())
-        if settings.USE_TZ:
-            cache_key += '.%s' % get_current_timezone_name()
+        #if settings.USE_TZ:
+        #    cache_key += '.%s' % get_current_timezone_name()
         return cache_key
 
     @classmethod
